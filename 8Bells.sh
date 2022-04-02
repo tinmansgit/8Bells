@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/bash .... for FreeBSD change path to /usr/local/bin/bash
 
 # 8Bells.sh : Ships Bell Style Notification Script
 # Bash script to ring a Ship's bell from 8AM (08:00) to 8PM (20:00)
