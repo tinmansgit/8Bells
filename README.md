@@ -8,7 +8,7 @@ Requires afplay & sox to be installed for macOS
 
 - Place 8Bells.sh in ~/bin
 - Place 8Bells mp3's in ~/Music/8Bells/ 
-- Add crontab to call 8Bells.sh or 8Bells.macOS.sh every 30 minutes. 
+- Add crontab to call 8Bells script every 30 minutes. 
 - Debian
 - */30 * * * * /home/username/bin/8Bells.sh 
 - or 
