@@ -7,6 +7,8 @@ Requires sox & libsox-fmt-mp3 to be installed for Debian
 Requires afplay & sox to be installed for macOS
 Requires sox to be installed for FreeBSD
 
+If you download the FreeBSD or Jack versions, you will need to rename the file to 8Bells.sh
+
 - Place 8Bells.sh in ~/bin
 - Place 8Bells mp3's in ~/Music/8Bells/ 
 - Add crontab to call 8Bells script every 30 minutes. 
