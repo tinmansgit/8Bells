@@ -2,8 +2,8 @@
 
 mpv_cmd="/usr/bin/mpv --ao=jack"
 quiet=">/dev/null 2>&1"
-error_log="/path/to/logger_8bells_error.log"
-debug_log="/path/to/logger_8bells_debug.log"
+error_log="logger_8bells_error.log"
+debug_log="logger_8bells_debug.log"
 
 current_time=$(date +%H%M)
 
@@ -14,6 +14,8 @@ log_debug() {
 log_error() {
     echo "$(date +'%Y-%m-%d %H:%M:%S') [ERROR] $1" >> "$error_log"
 }
+
+log_debug "checking time"
 
 case "$current_time" in
     0800|1200|1600|2000)
@@ -41,6 +43,7 @@ case "$current_time" in
         file="/home/coder/Music/8Bells/7b.mp3"
         ;;
     *)
+        log_debug "Finished time check"
         exit 0
         ;;
 esac
@@ -52,3 +55,5 @@ if ${mpv_cmd} "$file" $quiet; then
 else
     log_error "Failed to play: $file"
 fi
+
+log_debug "Mp3 should have played, between 8am and 8pm"
