@@ -1,45 +1,36 @@
-#!/usr/bin/bash
+#!/bin/bash
 
-# 8Bells.sh : Ships Bell Style Notification Script
-# Bash script to ring a Ship's bell from 8AM (08:00) to 8PM (20:00)
-# Requires sox & libsox-fmt-mp3 to be installed
+mpv_cmd="/usr/bin/mpv --ao=jack"
+quiet=">/dev/null 2>&1"
 
-# play single bell mp3 file on the half hour, located in user's ~/Music directory
-sb() { /usr/bin/play ~/Music/8Bells/sb.mp3 >/dev/null 2>&1
-	}
+current_time=$(date +%H%M)
 
-# play double bell mp3 file on the hour, located in user's ~/Music directory
-db() { /usr/bin/play ~/Music/8Bells/db.mp3 >/dev/null 2>&1
-	}
-
-# set current time variable to the current hour and minute
-currenttime=$(date +%H:%M)
-
-# check current local time is between 8:00-20:00
-if [[ "$currenttime" > "07:30" ]] || [[ "$currenttime" < "20:30" ]]; then
-
-	# 4 hour blocks of time checks with bells played @ 8 individual 30 minute intervals throughout
-	if [[ "$currenttime" = "08:00" ]] || [[ "$currenttime" = "12:00" ]] || [[ "$currenttime" = "16:00" ]] || [[ "$currenttime" = "20:00" ]] ; then
-		db && db && db && db
-	elif [[ "$currenttime" = "08:30" ]] || [[ "$currenttime" = "12:30" ]] || [[ "$currenttime" = "16:30" ]] ; then
-		sb
-	elif [[ "$currenttime" = "09:00" ]] || [[ "$currenttime" = "13:00" ]] || [[ "$currenttime" = "17:00" ]] ; then
-		db
-	elif [[ "$currenttime" = "09:30" ]] || [[ "$currenttime" = "13:30" ]] || [[ "$currenttime" = "17:30" ]] ; then
-		db && sb
-	elif [[ "$currenttime" = "10:00" ]] || [[ "$currenttime" = "14:00" ]] || [[ "$currenttime" = "18:00" ]] ; then
-		db && db
-	elif [[ "$currenttime" = "10:30" ]] || [[ "$currenttime" = "14:30" ]] || [[ "$currenttime" = "18:30" ]] ; then
-		db && db && sb
-	elif [[ "$currenttime" = "11:00" ]] || [[ "$currenttime" = "15:00" ]] || [[ "$currenttime" = "19:00" ]] ; then
-		db && db && db
-	elif [[ "$currenttime" = "11:30" ]] || [[ "$currenttime" = "15:30" ]] || [[ "$currenttime" = "19:30" ]] ; then
-		db && db && db && sb
-	else
-		exit	
-	fi
-
-else
-     exit
-fi
-
+case "$current_time" in
+    0800|1200|1600|2000)
+        ${mpv_cmd} /home/coder/Music/8Bells/8b.mp3 $quiet
+        ;;
+    0830|1230|1630)
+        ${mpv_cmd} /home/coder/Music/8Bells/1b.mp3 $quiet
+        ;;
+    0900|1300|1700)
+        ${mpv_cmd} /home/coder/Music/8Bells/2b.mp3 $quiet
+        ;;
+    0930|1330|1730)
+        ${mpv_cmd} /home/coder/Music/8Bells/3b.mp3 $quiet
+        ;;
+    1000|1400|1800)
+        ${mpv_cmd} /home/coder/Music/8Bells/4b.mp3 $quiet
+        ;;
+    1030|1430|1830)
+        ${mpv_cmd} /home/coder/Music/8Bells/5b.mp3 $quiet
+        ;;
+    1100|1500|1900)
+        ${mpv_cmd} /home/coder/Music/8Bells/6b.mp3 $quiet
+        ;;
+    1130|1530|1930)
+        ${mpv_cmd} /home/coder/Music/8Bells/7b.mp3 $quiet
+        ;;
+    *)
+        exit 0
+        ;;
+esac

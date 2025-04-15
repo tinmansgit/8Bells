@@ -1,20 +1,11 @@
-# 8Bells
-Ships Bell Style Notification Script
-
-Bash script to ring a Ship's bell from 8AM (08:00) to 8PM (20:00)
-
-Requires sox & libsox-fmt-mp3 to be installed for Debian
-Requires afplay & sox to be installed for macOS
-Requires sox to be installed for FreeBSD
-
-If you download the FreeBSD or Jack versions, you will need to rename the file to 8Bells.sh
-
-- Place 8Bells.sh in ~/bin
-- Place 8Bells mp3's in ~/Music/8Bells/ 
-- Add crontab to call 8Bells script every 30 minutes. 
-- Debian
-- */30 * * * * /home/username/bin/8Bells.sh 
-- FreeBSD
-- */30 * * * * /usr/home/username/bin/8Bells.sh 
-- macOS
-- */30 * * * * /Users/username/bin/8Bells.macOS.sh 
+# 8Bells<br />
+<br />
+Ships Bell Style Notification Script<br />
+<br />
+Bash script to ring a Ship's bell from 8AM (08:00) to 8PM (20:00)<br />
+<br />
+- Place 8Bells.sh in ~/bin and chmod +x 8Bells.sh<br />
+- Place 8Bells mp3's in ~/Music/8Bells/<br />
+- Add crontab to call 8Bells script every 30 minutes.<br /> 
+- Debian crontab entry */30 * * * * /home/username/bin/8Bells.sh<br />
+<br />
