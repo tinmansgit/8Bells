@@ -2,8 +2,8 @@
 
 mpv_cmd="/usr/bin/mpv --ao=jack"
 quiet=">/dev/null 2>&1"
-error_log="logger_8bells_error.log"
-debug_log="logger_8bells_debug.log"
+error_log="/home/coder/bin/Bash/8Bells/logger_8bells_error.log"
+debug_log="/home/coder/bin/Bash/8Bells/logger_8bells_debug.log"
 
 current_time=$(date +%H%M)
 
@@ -50,7 +50,7 @@ esac
 
 log_debug "Attempting to play: $file"
 
-if ${mpv_cmd} "$file" $quiet; then
+if eval "${mpv_cmd} \"$file\" $quiet"; then
     log_debug "Successfully played: $file"
 else
     log_error "Failed to play: $file"
