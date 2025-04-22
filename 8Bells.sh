@@ -1,22 +1,14 @@
 #!/bin/bash
-
 mpv_cmd="/usr/bin/mpv --ao=jack"
 quiet=">/dev/null 2>&1"
 error_log="~/bin/logger_8bells_error.log"
 debug_log="~/bin/logger_8bells_debug.log"
-
 current_time=$(date +%H%M)
 
-log_debug() {
-    echo "$(date +'%Y-%m-%d %H:%M:%S') [DEBUG] $1" >> "$debug_log"
-}
-
-log_error() {
-    echo "$(date +'%Y-%m-%d %H:%M:%S') [ERROR] $1" >> "$error_log"
-}
+log_debug() {echo "$(date +'%Y-%m-%d %H:%M:%S') [DEBUG] $1" >> "$debug_log"}
+log_error() {echo "$(date +'%Y-%m-%d %H:%M:%S') [ERROR] $1" >> "$error_log"}
 
 log_debug "checking time"
-
 case "$current_time" in
     0800|1200|1600|2000)
         file="~/Music/8Bells/8b.mp3"
@@ -49,7 +41,6 @@ case "$current_time" in
 esac
 
 log_debug "Attempting to play: $file"
-
 if eval "${mpv_cmd} \"$file\" $quiet"; then
     log_debug "Successfully played: $file"
 else
